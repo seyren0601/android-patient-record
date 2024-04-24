@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:title="Tìm"
+        android:icon="@mipmap/ic_launcher_search_foreground"
+        app:showAsAction="always"
+        android:id="@+id/menuSearch"/>
+    <item android:title="Thêm"
+        android:icon="@mipmap/ic_launcher_add_foreground"
+        app:showAsAction="always"
+        android:id="@+id/menuAdd"/>
+</menu>
