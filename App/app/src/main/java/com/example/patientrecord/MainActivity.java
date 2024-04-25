@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         listview_benhnhan.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(MainActivity.this, Details_BuoiKhamActivity.class);
+                Intent intent = new Intent(MainActivity.this, Activity_BenhNhan.class);
                 BenhNhan selectedItem = arraylist_benhnhan.get(position);
                 intent.putExtra("BenhNhan", selectedItem);
                 startActivity(intent);

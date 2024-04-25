@@ -1,6 +1,9 @@
 package com.example.patientrecord;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -66,7 +69,6 @@ public class BenhNhanAdapter extends BaseAdapter {
             holder.Ten = (TextView)view.findViewById(R.id.viewTen);
             holder.GioiTinh = (TextView)view.findViewById(R.id.viewGioiTinh);
             holder.NgaySinh = (TextView)view.findViewById(R.id.viewNgaySinh);
-            holder.imgViewDelete = (ImageView)view.findViewById(R.id.right_view);
             view.setTag(holder);
         }
         else{
@@ -82,39 +84,6 @@ public class BenhNhanAdapter extends BaseAdapter {
             holder.GioiTinh.setText("Nữ");
         }
         holder.NgaySinh.setText(benhnhan.ngaY_SINH);
-        SwipeLayout swipe = (SwipeLayout)view.findViewById(R.id.swipe_layout);
-        holder.imgViewDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                new AlertDialog.Builder(Context)
-                .setTitle("Xóa bệnh nhân")
-                .setMessage("Bạn có muốn xóa bệnh nhân này không?")
-                .setIcon(android.R.drawable.ic_dialog_alert)
-                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        APIService.apiservice.deleteBenhNhan(benhnhan.id).enqueue(new Callback<Boolean>() {
-                            @Override
-                            public void onResponse(Call<Boolean> call, Response<Boolean> response) {
-                                if(response.isSuccessful()){
-                                    Context.CallAPI();
-                                    Toast.makeText(Context, "Xóa thành công", Toast.LENGTH_SHORT).show();
-                                }
-                                else{
-                                    Toast.makeText(Context, "Xóa thành công, lỗi API", Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                            @Override
-                            public void onFailure(Call<Boolean> call, Throwable t) {
-
-                                Toast.makeText(Context, "Xóa thất bại", Toast.LENGTH_SHORT).show();
-                            }
-                        });
-                        swipe.close();
-                    }
-                }).show();
-            }
-        });
         return view;
     }
 }
