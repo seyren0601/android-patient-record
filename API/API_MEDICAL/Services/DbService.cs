@@ -20,6 +20,14 @@ namespace API_MEDICAL.Services
             }
         }
 
+        public List<Benh> GetAllBenh()
+        {
+            using(var Context = new DatabaseContext())
+            {
+                return Context.DbBenh.ToList();
+            }
+        }
+
         public List<Thuoc> GetThuoc_TenThuoc(string tenThuoc)
         {
             using(var Context = new DatabaseContext())
@@ -41,6 +49,14 @@ namespace API_MEDICAL.Services
                                                                                    || x.HOAT_CHAT.Contains(hoatChat, StringComparison.OrdinalIgnoreCase))
                     .ToList();
                 return lst_thuoc;
+            }
+        }
+
+        public List<Thuoc> GetAllThuoc()
+        {
+            using( var Context = new DatabaseContext())
+            {
+                return Context.DbThuoc.ToList();
             }
         }
 

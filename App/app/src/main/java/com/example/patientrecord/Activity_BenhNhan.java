@@ -37,6 +37,8 @@ public class Activity_BenhNhan extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_benhnhan);
 
+        setTitle("HỒ SƠ");
+
         Intent intent = getIntent();
         benhNhan = (BenhNhan)intent.getSerializableExtra("BenhNhan");
         listview_buoikham = findViewById(R.id.chitiet_list_buoikham);

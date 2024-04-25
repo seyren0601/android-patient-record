@@ -6,198 +6,364 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center">
-
-        <ImageView
-            android:id="@+id/chitiet_image"
-            android:layout_width="150sp"
-            android:layout_height="150sp"
-            android:src="@drawable/ic_profile_picture"/>
-
-        <TextView
-            android:id="@+id/chitiet_ten"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TÊN BỆNH NHÂN"
-            android:textColor="@color/white"
-            android:textSize="30sp"/>
-        <TextView
-            android:id="@+id/chitiet_gioitinh"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="GIỚI TÍNH"
-            android:textColor="@color/white"
-            android:textSize="20sp"/>
-        <androidx.appcompat.widget.AppCompatButton
-            style="@style/Widget.AppCompat.Button"
-            android:id="@+id/btn_them_buoikham"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="THÊM BUỔI KHÁM"/>
-        <androidx.appcompat.widget.AppCompatButton
-            style="@style/Widget.AppCompat.Button"
-            android:id="@+id/btn_edit_benhnhan"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="LƯU THAY ĐỔI"
-            android:visibility="gone"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/border">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="ID"
-                android:textSize="20sp"
-                android:textColor="@color/white"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:layout_marginStart="15dp"/>
-
-            <TextView
-                android:id="@+id/chitiet_id"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:text="ID BỆNH NHÂN"
-                android:textColor="@color/white"
-                android:layout_marginStart="15dp"
-                android:layout_marginBottom="5dp"/>
-            <EditText
-                android:id="@+id/chitiet_edit_id"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:hint="EDIT ID"
-                android:textColorHint="@color/placeholder_text"
-                android:textColor="@color/white"
-                android:layout_marginStart="15dp"
-                android:layout_marginBottom="5dp"
-                android:visibility="gone"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/border">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="BHYT"
-                android:textSize="20sp"
-                android:textColor="@color/white"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:layout_marginStart="15dp"/>
-
-            <TextView
-                android:id="@+id/chitiet_bhyt"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:text="BHYT BỆNH NHÂN"
-                android:textColor="@color/white"
-                android:layout_marginStart="15dp"
-                android:layout_marginBottom="5dp"/>
-            <EditText
-                android:id="@+id/chitiet_edit_bhyt"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:hint="EDIT BHYT"
-                android:textColorHint="@color/placeholder_text"
-                android:textColor="@color/white"
-                android:layout_marginStart="15dp"
-                android:layout_marginBottom="5dp"
-                android:visibility="gone"/>
-        </LinearLayout>
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/border">
+            android:gravity="center">
+            <ImageView
+                android:id="@+id/chitiet_image"
+                android:layout_width="150sp"
+                android:layout_height="150sp"
+                android:src="@mipmap/ic_buoikham"/>
 
-            <LinearLayout
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="TUỔI"
-                    android:textSize="20sp"
-                    android:textColor="@color/white"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginStart="15dp"/>
-
-                <TextView
-                    android:id="@+id/chitiet_tuoi"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:text="TUỔI"
-                    android:textColor="@color/white"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginBottom="5dp"/>
-            </LinearLayout>
-            <TextView
-                android:layout_width="1dp"
-                android:layout_height="match_parent"
-                android:background="@color/white"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/add_buoikham_ten"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="NGÀY SINH"
+                    android:text="TÊN BỆNH NHÂN"
+                    android:textColor="@color/white"
+                    android:textSize="30sp"/>
+                <TextView
+                    android:id="@+id/add_buoikham_gioitinh"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="GIỚI TÍNH"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"/>
+                <TextView
+                    android:id="@+id/add_buoikham_tuoi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TUỔI"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/border">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="BỆNH"
                     android:textSize="20sp"
                     android:textColor="@color/white"
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"
                     android:layout_marginStart="15dp"/>
-
-                <TextView
-                    android:id="@+id/chitiet_ngaysinh"
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ICD"
+                        android:textSize="20sp"
+                        android:textColor="@color/white"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginStart="15dp"/>
+                    <AutoCompleteTextView
+                        android:id="@+id/add_buoikham_icd"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="MÃ BỆNH ICD"
+                        android:completionThreshold="2"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        android:textColorHint="@color/placeholder_text"
+                        android:layout_marginStart="20dp"/>
+                </LinearLayout>
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="TÊN"
+                        android:textSize="20sp"
+                        android:textColor="@color/white"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginStart="15dp"/>
+                    <TextView
+                        android:id="@+id/add_buoikham_tenbenh"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/placeholder_text"
+                        android:textSize="20sp"
+                        android:text="NHẬP ICD ĐỂ HIỆN"
+                        android:textColorHint="@color/placeholder_text"
+                        android:layout_marginStart="16dp"/>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/border">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="LÝ DO ĐẾN KHÁM"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginStart="15dp"/>
+
+            <EditText
+                android:id="@+id/add_buoikham_lido"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:gravity="top"
+                android:textSize="20sp"
+                android:inputType="text|textMultiLine"
+                android:hint="LÝ DO"
+                android:textColorHint="@color/placeholder_text"
+                android:textColor="@color/white"
+                android:layout_marginStart="11dp"
+                android:layout_marginBottom="5dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/border"
+                android:padding="10dp"
+                android:layout_margin="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="MẠCH"
                     android:textSize="20sp"
-                    android:text="NGÀY SINH"
                     android:textColor="@color/white"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginBottom="5dp"/>
+                    />
                 <EditText
-                    android:id="@+id/chitiet_edit_ngaysinh"
-                    android:layout_width="match_parent"
+                    android:id="@+id/add_buoikham_mach"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:inputType="number"
                     android:textSize="20sp"
-                    android:hint="EDIT NGÀY SINH"
-                    android:textColorHint="@color/placeholder_text"
                     android:textColor="@color/white"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginBottom="5dp"
-                    android:visibility="gone"/>
+                    android:hint="lần/phút"
+                    android:textColorHint="@color/placeholder_text"/>
             </LinearLayout>
 
-        </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/border"
+                android:padding="10dp"
+                android:layout_margin="5dp">
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="NHỊP THỞ"
+                    android:textSize="20sp"
+                    android:textColor="@color/white"
+                    />
+                <EditText
+                    android:id="@+id/add_buoikham_nhiptho"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:inputType="number"
+                    android:textSize="20sp"
+                    android:textColor="@color/white"
+                    android:hint="lần/phút"
+                    android:textColorHint="@color/placeholder_text"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/border"
+                android:padding="10dp"
+                android:layout_margin="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="HUYẾT ÁP"
+                    android:textSize="20sp"
+                    android:textColor="@color/white"
+                    />
+                <EditText
+                    android:id="@+id/add_buoikham_huyetap"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:inputType="number"
+                    android:textSize="20sp"
+                    android:textColor="@color/white"
+                    android:hint="mmHG"
+                    android:textColorHint="@color/placeholder_text"/>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/border"
+                android:padding="10dp"
+                android:layout_margin="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="CHIỀU CAO"
+                    android:textSize="20sp"
+                    android:textColor="@color/white"
+                    />
+                <EditText
+                    android:id="@+id/add_buoikham_chieucao"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:inputType="numberDecimal"
+                    android:textSize="20sp"
+                    android:textColor="@color/white"
+                    android:hint="mét"
+                    android:textColorHint="@color/placeholder_text"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/border"
+                android:padding="10dp"
+                android:layout_margin="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="CÂN NẶNG"
+                    android:textSize="20sp"
+                    android:textColor="@color/white"
+                    />
+                <EditText
+                    android:id="@+id/add_buoikham_cannang"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:inputType="numberDecimal"
+                    android:textSize="20sp"
+                    android:textColor="@color/white"
+                    android:hint="kg"
+                    android:textColorHint="@color/placeholder_text"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/border"
+                android:padding="10dp"
+                android:layout_margin="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="BMI"
+                    android:textSize="20sp"
+                    android:textColor="@color/white"
+                    />
+                <EditText
+                    android:id="@+id/add_buoikham_bmi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:enabled="false"
+                    android:textSize="20sp"
+                    android:textColor="@color/white"
+                    android:hint="tự động"
+                    android:textColorHint="@color/placeholder_text"/>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/border"
+                android:padding="10dp"
+                android:layout_margin="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="NHIỆT ĐỘ/THÂN NHIỆT"
+                    android:textSize="20sp"
+                    android:textColor="@color/white"
+                    />
+                <EditText
+                    android:id="@+id/add_buoikham_nhietdo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:inputType="numberDecimal"
+                    android:textSize="20sp"
+                    android:textColor="@color/white"
+                    android:hint="\u00B0C"
+                    android:textColorHint="@color/placeholder_text"/>
+            </LinearLayout>
+        </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -208,35 +374,26 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="SỐ ĐIỆN THOẠI"
+                android:text="TRIỆU CHỨNG"
                 android:textSize="20sp"
                 android:textColor="@color/white"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
                 android:layout_marginStart="15dp"/>
 
-            <TextView
-                android:id="@+id/chitiet_sdt"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:text="SỐ ĐIỆN THOẠI BỆNH NHÂN"
-                android:textColor="@color/white"
-                android:layout_marginStart="15dp"
-                android:layout_marginBottom="5dp"/>
             <EditText
-                android:id="@+id/chitiet_edit_sdt"
+                android:id="@+id/add_buoikham_trieuchung"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="100dp"
+                android:gravity="top"
                 android:textSize="20sp"
-                android:hint="EDIT SỐ ĐIỆN THOẠI"
+                android:inputType="text|textMultiLine"
+                android:hint="TRIỆU CHỨNG"
                 android:textColorHint="@color/placeholder_text"
                 android:textColor="@color/white"
-                android:layout_marginStart="15dp"
-                android:layout_marginBottom="5dp"
-                android:visibility="gone"/>
+                android:layout_marginStart="11dp"
+                android:layout_marginBottom="5dp"/>
         </LinearLayout>
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -247,35 +404,26 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="CĂN CƯỚC CÔNG DÂN"
+                android:text="BỆNH PHỤ"
                 android:textSize="20sp"
                 android:textColor="@color/white"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
                 android:layout_marginStart="15dp"/>
 
-            <TextView
-                android:id="@+id/chitiet_cccd"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:text="CCCD"
-                android:textColor="@color/white"
-                android:layout_marginStart="15dp"
-                android:layout_marginBottom="5dp"/>
             <EditText
-                android:id="@+id/chitiet_edit_cccd"
+                android:id="@+id/add_buoikham_benhphu"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="100dp"
+                android:gravity="top"
                 android:textSize="20sp"
-                android:hint="EDIT CCCD"
+                android:inputType="text|textMultiLine"
+                android:hint="BỆNH PHỤ"
                 android:textColorHint="@color/placeholder_text"
                 android:textColor="@color/white"
-                android:layout_marginStart="15dp"
-                android:layout_marginBottom="5dp"
-                android:visibility="gone"/>
+                android:layout_marginStart="11dp"
+                android:layout_marginBottom="5dp"/>
         </LinearLayout>
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -286,35 +434,26 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="ĐỊA CHỈ"
+                android:text="LỜI DẶN KHÁM"
                 android:textSize="20sp"
                 android:textColor="@color/white"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
                 android:layout_marginStart="15dp"/>
 
-            <TextView
-                android:id="@+id/chitiet_diachi"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:text="ĐỊA CHỈ BỆNH NHÂN"
-                android:textColor="@color/white"
-                android:layout_marginStart="15dp"
-                android:layout_marginBottom="5dp"/>
             <EditText
-                android:id="@+id/chitiet_edit_diachi"
+                android:id="@+id/add_buoikham_loidan"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="100dp"
+                android:gravity="top"
                 android:textSize="20sp"
-                android:hint="EDIT ĐỊA CHỈ"
+                android:inputType="text|textMultiLine"
+                android:hint="LỜI DẶN"
                 android:textColorHint="@color/placeholder_text"
                 android:textColor="@color/white"
-                android:layout_marginStart="15dp"
-                android:layout_marginBottom="5dp"
-                android:visibility="gone"/>
+                android:layout_marginStart="11dp"
+                android:layout_marginBottom="5dp"/>
         </LinearLayout>
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -325,33 +464,25 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="NGHỀ NGHIỆP"
+                android:text="KẾT QUẢ ĐIỀU TRỊ"
                 android:textSize="20sp"
                 android:textColor="@color/white"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
                 android:layout_marginStart="15dp"/>
 
-            <TextView
-                android:id="@+id/chitiet_nghenghiep"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:text="NGHỀ NGHIỆP BỆNH NHÂN"
-                android:textColor="@color/white"
-                android:layout_marginStart="15dp"
-                android:layout_marginBottom="5dp"/>
             <EditText
-                android:id="@+id/chitiet_edit_nghenghiep"
+                android:id="@+id/add_buoikham_ketqua"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="70dp"
+                android:gravity="top"
                 android:textSize="20sp"
-                android:hint="EDIT NGHỀ NGHIỆP"
+                android:inputType="text|textMultiLine"
+                android:hint="KẾT QUẢ"
                 android:textColorHint="@color/placeholder_text"
                 android:textColor="@color/white"
-                android:layout_marginStart="15dp"
-                android:layout_marginBottom="5dp"
-                android:visibility="gone"/>
+                android:layout_marginStart="11dp"
+                android:layout_marginBottom="5dp"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -363,19 +494,25 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginStart="10dp"
-                android:textSize="30sp"
-                android:text="LỊCH SỬ KHÁM"
-                android:textColor="@color/white"/>
-            <ListView
-                android:id="@+id/chitiet_list_buoikham"
+                android:text="NGÀY TÁI KHÁM"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginStart="15dp"/>
+
+            <EditText
+                android:id="@+id/add_buoikham_ngaytaikham"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:cacheColorHint="@color/white"/>
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:hint="NGÀY"
+                android:textColorHint="@color/placeholder_text"
+                android:textColor="@color/white"
+                android:layout_marginStart="11dp"
+                android:layout_marginBottom="5dp"/>
         </LinearLayout>
+
+
     </LinearLayout>
-
-
-
 </ScrollView>

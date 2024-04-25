@@ -46,6 +46,15 @@ app.MapGet("/benhnhan/all", (DbService service) =>
 {
     return service.GetBenhNhan();
 });
+
+app.MapGet("/benh/all", (DbService service)=>{
+    return service.GetAllBenh();
+});
+
+app.MapGet("/thuoc/all", (DbService service) =>
+{
+    return service.GetAllThuoc();
+});
 #endregion
 
 #region Post

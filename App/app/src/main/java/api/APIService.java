@@ -1,6 +1,8 @@
 package api;
 
+import com.example.patientrecord.Benh;
 import com.example.patientrecord.BenhNhan;
+import com.example.patientrecord.Thuoc;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -25,6 +27,15 @@ public interface APIService {
             .create(APIService.class);
     @GET("benhnhan/all")
     Call<List<BenhNhan>> getData();
+
+    @GET("benh/all")
+    Call<ArrayList<Benh>> GetAllBenh();
+
+    @GET("thuoc/all")
+    Call<ArrayList<Thuoc>> GetAllThuoc();
+
+    @GET("benh")
+    Call<ArrayList<Benh>> FindBenhByTen(@Query("icd") String icd);
 
     @POST("update/benhnhan")
     Call<BenhNhan> updateBenhNhan(@Body BenhNhan benhnhan);
