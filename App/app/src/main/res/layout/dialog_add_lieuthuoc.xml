@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20sp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="TẠO MỚI LIỀU THUỐC"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:textColor="@color/black"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Tên thuốc"
+                android:textSize="20sp"
+                android:textColor="@color/black"/>
+            <AutoCompleteTextView
+                android:id="@+id/dialog_lieuthuoc_tenthuoc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Hoạt chất"
+                android:textSize="20sp"
+                android:textColor="@color/black"/>
+            <AutoCompleteTextView
+                android:id="@+id/dialog_lieuthuoc_hoatchat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Mã thuốc"
+                android:textSize="20sp"
+                android:textColor="@color/black"/>
+            <TextView
+                android:id="@+id/dialog_lieuthuoc_mathuoc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nhập tên hoạt chất/tên thuốc"
+                android:textSize="20sp"
+                android:textColor="@color/url"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <LinearLayout
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:text="Sáng"
+                    android:textColor="@color/black"/>
+                <NumberPicker
+                    android:id="@+id/dialog_lieuthuoc_sang"
+                    android:layout_width="wrap_content"
+                    android:layout_height="70dp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:text="Trưa"
+                    android:textColor="@color/black"/>
+                <NumberPicker
+                    android:id="@+id/dialog_lieuthuoc_trua"
+                    android:layout_width="wrap_content"
+                    android:layout_height="70dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <LinearLayout
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:text="Chiều"
+                android:textColor="@color/black"/>
+            <NumberPicker
+                android:id="@+id/dialog_lieuthuoc_chieu"
+                android:layout_width="wrap_content"
+                android:layout_height="70dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:text="Tối"
+                android:textColor="@color/black"/>
+            <NumberPicker
+                android:id="@+id/dialog_lieuthuoc_toi"
+                android:layout_width="wrap_content"
+                android:layout_height="70dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnAddBenhnhan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Thêm"
+                android:textSize="20sp" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnHuyAddBenhnhan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hủy"
+                android:textSize="20sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+</RelativeLayout>

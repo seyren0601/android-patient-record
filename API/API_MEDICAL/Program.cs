@@ -55,6 +55,11 @@ app.MapGet("/thuoc/all", (DbService service) =>
 {
     return service.GetAllThuoc();
 });
+
+app.MapGet("/thuoc", ([FromQuery] string id, DbService service) =>
+{
+    return service.GetThuoc(id);
+});
 #endregion
 
 #region Post

@@ -1,4 +1,4 @@
-package com.example.patientrecord;
+package com.example.patientrecord.Classes;
 
 public class Thuoc {
     public String id;

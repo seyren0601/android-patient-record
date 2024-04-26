@@ -1,8 +1,8 @@
 package api;
 
-import com.example.patientrecord.Benh;
-import com.example.patientrecord.BenhNhan;
-import com.example.patientrecord.Thuoc;
+import com.example.patientrecord.Classes.Benh;
+import com.example.patientrecord.Classes.BenhNhan;
+import com.example.patientrecord.Classes.Thuoc;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -22,9 +22,12 @@ import retrofit2.http.Query;
 public interface APIService {
     Gson gson = new GsonBuilder().setDateFormat("yyyy/MM/dd").create();
     APIService apiservice = new Retrofit.Builder()
-            .baseUrl("http://10.0.2.2:5154/").addConverterFactory(GsonConverterFactory.create(gson))
+            .baseUrl("http://192.168.1.5:80/").addConverterFactory(GsonConverterFactory.create(gson))
             .build()
             .create(APIService.class);
+
+    @GET("thuoc")
+    Call<Thuoc> getThuoc(@Query("id") String id_thuoc);
     @GET("benhnhan/all")
     Call<List<BenhNhan>> getData();
 

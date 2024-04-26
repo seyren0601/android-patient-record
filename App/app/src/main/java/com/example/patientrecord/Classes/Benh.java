@@ -1,4 +1,4 @@
-package com.example.patientrecord;
+package com.example.patientrecord.Classes;
 
 import androidx.annotation.Nullable;
 

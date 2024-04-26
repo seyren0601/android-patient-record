@@ -28,6 +28,14 @@ namespace API_MEDICAL.Services
             }
         }
 
+        public Thuoc GetThuoc(string ID)
+        {
+            using(var Context = new DatabaseContext())
+            {
+                return Context.DbThuoc.FirstOrDefault(th => th.ID == ID);
+            }
+        }
+
         public List<Thuoc> GetThuoc_TenThuoc(string tenThuoc)
         {
             using(var Context = new DatabaseContext())

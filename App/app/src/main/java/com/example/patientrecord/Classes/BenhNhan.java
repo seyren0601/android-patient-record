@@ -1,4 +1,4 @@
-package com.example.patientrecord;
+package com.example.patientrecord.Classes;
 
 import androidx.annotation.Nullable;
 
@@ -6,21 +6,21 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class BenhNhan implements Serializable {
-    int id;
+    public int id;
     @Nullable
-    String bhyt;
-    String ten;
-    String ngaY_SINH;
-    int tuoi;
-    Boolean gioI_TINH;
+    public String bhyt;
+    public String ten;
+    public String ngaY_SINH;
+    public int tuoi;
+    public Boolean gioI_TINH;
     @Nullable
-    String nghE_NGHIEP;
+    public String nghE_NGHIEP;
     @Nullable
-    String sdt;
+    public String sdt;
     @Nullable
-    String diA_CHI;
+    public String diA_CHI;
     @Nullable
-    String cccd;
+    public String cccd;
     public BenhNhan(String ten, String ngaysinh, String bhyt, Boolean gioitinh){
         this.ten = ten;
         ngaY_SINH = ngaysinh;

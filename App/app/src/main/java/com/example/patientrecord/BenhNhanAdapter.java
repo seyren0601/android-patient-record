@@ -1,28 +1,15 @@
 package com.example.patientrecord;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
+import com.example.patientrecord.Classes.BenhNhan;
 
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
 import java.util.List;
-
-import api.APIService;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class BenhNhanAdapter extends BaseAdapter {
     public MainActivity Context;
