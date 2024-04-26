@@ -164,13 +164,13 @@
             android:gravity="center">
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnAddBenhnhan"
+                android:id="@+id/dialog_lieuthuoc_btn_them"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Thêm"
                 android:textSize="20sp" />
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnHuyAddBenhnhan"
+                android:id="@+id/dialog_lieuthuoc_btn_huy"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Hủy"

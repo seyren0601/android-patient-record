@@ -2,30 +2,35 @@ package com.example.patientrecord;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.TextUtils;
 import android.text.style.UnderlineSpan;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.patientrecord.Classes.Benh;
+import com.example.patientrecord.Classes.LieuThuoc;
 import com.example.patientrecord.Classes.Thuoc;
 
 import java.text.SimpleDateFormat;
@@ -45,11 +50,18 @@ public class Activity_Them_BuoiKham extends AppCompatActivity {
     ArrayList<String> listTenThuoc;
     ArrayList<String> listHoatChat;
     Thuoc thuoc;
+    DonThuocAdapter adapter;
+    ArrayList<LieuThuoc> list_lieuthuoc;
+    ListView listview;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_add_buoikham);
+        setTitle("Thêm buổi khám");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        list_lieuthuoc = new ArrayList<LieuThuoc>();
 
         EditText edt_cannang = findViewById(R.id.add_buoikham_cannang);
         EditText edt_chieucao = findViewById(R.id.add_buoikham_chieucao);
@@ -94,8 +106,22 @@ public class Activity_Them_BuoiKham extends AppCompatActivity {
             }
         });
 
+        listview = findViewById(R.id.add_buoikham_toathuoc);
+        adapter = new DonThuocAdapter(this, R.layout.layout_viewitem_toathuoc, list_lieuthuoc);
+        listview.setAdapter(adapter);
+
         CallAPI_LoadBenh();
         CallAPI_LoadThuoc();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+
+        if (id==android.R.id.home) {
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     void Dialog_Them_LieuThuoc(){
@@ -156,6 +182,8 @@ public class Activity_Them_BuoiKham extends AppCompatActivity {
                 content.setSpan(new UnderlineSpan(), 0, thuoc_id.length(), 0);
                 text_mathuoc.setText(content);
                 autoText_HoatChat.setText(thuoc.hoaT_CHAT);
+                InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(autoText_TenThuoc.getWindowToken(), InputMethodManager.RESULT_UNCHANGED_SHOWN);
             }
         });
         autoText_HoatChat.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -173,8 +201,43 @@ public class Activity_Them_BuoiKham extends AppCompatActivity {
                 content.setSpan(new UnderlineSpan(), 0, thuoc_id.length(), 0);
                 text_mathuoc.setText(content);
                 autoText_TenThuoc.setText(thuoc.teN_THUOC);
+                InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(autoText_HoatChat.getWindowToken(), InputMethodManager.RESULT_UNCHANGED_SHOWN);
             }
         });
+
+        Button btn_add = dialog.findViewById(R.id.dialog_lieuthuoc_btn_them);
+        Button btn_close = dialog.findViewById(R.id.dialog_lieuthuoc_btn_huy);
+
+        btn_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NumberPicker sang = dialog.findViewById(R.id.dialog_lieuthuoc_sang);
+                NumberPicker trua = dialog.findViewById(R.id.dialog_lieuthuoc_trua);
+                NumberPicker chieu = dialog.findViewById(R.id.dialog_lieuthuoc_chieu);
+                NumberPicker toi = dialog.findViewById(R.id.dialog_lieuthuoc_toi);
+
+                String ma_thuoc = text_mathuoc.getText().toString();
+                int lieu_sang = sang.getValue();
+                int lieu_trua = trua.getValue();
+                int lieu_chieu = chieu.getValue();
+                int lieu_toi = toi.getValue();
+
+
+                LieuThuoc lieuthuoc = new LieuThuoc(ma_thuoc, lieu_sang, lieu_trua, lieu_chieu, lieu_toi);
+                list_lieuthuoc.add(lieuthuoc);
+                adapter.notifyDataSetChanged();
+
+                dialog.dismiss();
+            }
+        });
+        btn_close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
 
 
         dialog.show();
@@ -184,7 +247,7 @@ public class Activity_Them_BuoiKham extends AppCompatActivity {
         Calendar calendar = Calendar.getInstance();
         int ngay = Integer.valueOf(calendar.getTime().getDate());
         int thang = Integer.valueOf(calendar.getTime().getMonth());
-        int nam = Integer.valueOf(calendar.getTime().getYear());
+        int nam = Integer.valueOf(calendar.getTime().getYear() + 1900);
 
         DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
             @Override

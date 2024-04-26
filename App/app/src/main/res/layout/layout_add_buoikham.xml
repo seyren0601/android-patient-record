@@ -72,7 +72,7 @@
                     android:layout_marginBottom="5dp"
                     android:layout_marginStart="15dp"/>
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
                     <TextView
@@ -534,16 +534,27 @@
                     android:textColor="@color/white"/>
                 <ImageButton
                     android:id="@+id/btn_them_lieuthuoc"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
                     android:layout_marginHorizontal="10dp"
                     android:layout_marginTop="7dp"
                     android:src="@mipmap/ic_plus_round">
                 </ImageButton>
+                <EditText
+                    android:id="@+id/add_buoikham_songay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:hint="Số ngày"
+                    android:inputType="number"
+                    android:textColorHint="@color/placeholder_text"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"/>
             </LinearLayout>
 
             <ListView
                 android:id="@+id/add_buoikham_toathuoc"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
                 android:cacheColorHint="@color/white"/>

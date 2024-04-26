@@ -19,11 +19,11 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class DonThuocAdapter extends BaseAdapter {
-    public MainActivity Context;
+    public Activity_Them_BuoiKham Context;
     public int Layout;
     public List<LieuThuoc> ListLieuThuoc;
 
-    public DonThuocAdapter(MainActivity context, int layout, List<LieuThuoc> listLieuThuoc){
+    public DonThuocAdapter(Activity_Them_BuoiKham context, int layout, List<LieuThuoc> listLieuThuoc){
         Context = context;
         Layout = layout;
         ListLieuThuoc = listLieuThuoc;
