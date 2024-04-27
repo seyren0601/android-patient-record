@@ -16,6 +16,7 @@ import android.widget.ListView;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.example.patientrecord.Adapters.BenhNhanAdapter;
 import com.example.patientrecord.Classes.BenhNhan;
 
 import java.text.ParseException;

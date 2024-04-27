@@ -12,12 +12,12 @@ namespace API_MEDICAL.Services
     public class DbService
     {
         #region Read
-        public List<Benh> GetBenh(string ICD)
+        public Benh GetBenh(string ICD)
         {
             using(var Context = new DatabaseContext())
             {
-                List<Benh> lst_benh = Context.DbBenh.Where(x=>x.MA_BENH.Contains(ICD, StringComparison.OrdinalIgnoreCase)).ToList();
-                return lst_benh;
+                Benh benh = Context.DbBenh.FirstOrDefault(x=>x.MA_BENH.Contains(ICD, StringComparison.OrdinalIgnoreCase));
+                return benh;
             }
         }
 
@@ -105,8 +105,17 @@ namespace API_MEDICAL.Services
             {
                 BenhNhan? benhnhan = Context.DbBenhNhan
                     .FirstOrDefault(x => x.BHYT != null && x.BHYT.Equals(bhyt, StringComparison.OrdinalIgnoreCase));
+                if (benhnhan != null) return benhnhan;
             }
             return null;
+        }
+
+        public List<BuoiKham> GetAllBuoiKham(int userID)
+        {
+            using(var Context = new DatabaseContext())
+            {
+                return Context.DbBuoiKham.Where(bk => bk.ID_BENH_NHAN == userID).ToList();
+            }
         }
         #endregion
 

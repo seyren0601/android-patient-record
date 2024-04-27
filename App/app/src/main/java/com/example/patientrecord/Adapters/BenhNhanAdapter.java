@@ -1,4 +1,4 @@
-package com.example.patientrecord;
+package com.example.patientrecord.Adapters;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +8,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.patientrecord.Classes.BenhNhan;
+import com.example.patientrecord.MainActivity;
+import com.example.patientrecord.R;
 
 import java.util.List;
 

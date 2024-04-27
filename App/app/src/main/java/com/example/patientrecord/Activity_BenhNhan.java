@@ -7,6 +7,7 @@ import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Adapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -16,10 +17,13 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
+import com.example.patientrecord.Adapters.BuoiKhamAdapter;
 import com.example.patientrecord.Classes.BenhNhan;
+import com.example.patientrecord.Classes.BuoiKham;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -31,6 +35,8 @@ import retrofit2.Response;
 public class Activity_BenhNhan extends AppCompatActivity {
     BenhNhan benhNhan;
     ListView listview_buoikham;
+    ArrayList<BuoiKham> list_buoikham;
+    BuoiKhamAdapter adapter_buoikham;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,8 +46,12 @@ public class Activity_BenhNhan extends AppCompatActivity {
 
         Intent intent = getIntent();
         benhNhan = (BenhNhan)intent.getSerializableExtra("BenhNhan");
-        listview_buoikham = findViewById(R.id.chitiet_list_buoikham);
         UpdateToView();
+
+        listview_buoikham = findViewById(R.id.chitiet_list_buoikham);
+        list_buoikham = new ArrayList<BuoiKham>();
+        adapter_buoikham = new BuoiKhamAdapter(this, R.layout.layout_viewitem_buoikham, list_buoikham);
+        listview_buoikham.setAdapter(adapter_buoikham);
 
         EditText edt_NgaySinh = findViewById(R.id.chitiet_edit_ngaysinh);
         edt_NgaySinh.setOnClickListener(new View.OnClickListener() {
@@ -98,6 +108,13 @@ public class Activity_BenhNhan extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        CallAPI_LoadBuoiKham();
     }
 
     public void ChonNgay_dialog(){
@@ -235,6 +252,25 @@ public class Activity_BenhNhan extends AppCompatActivity {
         TextView nghenghiep = findViewById(R.id.chitiet_nghenghiep);
         if(benhNhan.nghE_NGHIEP != null) nghenghiep.setText(benhNhan.nghE_NGHIEP);
         else nghenghiep.setText("N/A");
+    }
+
+    void CallAPI_LoadBuoiKham(){
+        APIService.apiservice.GetAllBuoiKham(benhNhan.id).enqueue(new Callback<ArrayList<BuoiKham>>() {
+            @Override
+            public void onResponse(Call<ArrayList<BuoiKham>> call, Response<ArrayList<BuoiKham>> response) {
+                if(response.isSuccessful()){
+                    for(BuoiKham buoiKham: response.body()){
+                        list_buoikham.add(buoiKham);
+                    }
+                    adapter_buoikham.notifyDataSetChanged();
+                }
+                Toast.makeText(Activity_BenhNhan.this, response.message(), Toast.LENGTH_LONG).show();
+            }
+            @Override
+            public void onFailure(Call<ArrayList<BuoiKham>> call, Throwable t) {
+                Toast.makeText(Activity_BenhNhan.this, t.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     void CallAPI_Update(BenhNhan benhnhan){

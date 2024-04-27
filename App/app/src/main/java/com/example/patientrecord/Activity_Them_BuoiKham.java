@@ -30,6 +30,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
+import com.example.patientrecord.Adapters.DonThuocAdapter;
 import com.example.patientrecord.Classes.Benh;
 import com.example.patientrecord.Classes.BenhNhan;
 import com.example.patientrecord.Classes.BuoiKham;

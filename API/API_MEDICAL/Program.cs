@@ -48,6 +48,11 @@ app.MapGet("/benhnhan/all", (DbService service) =>
     return service.GetBenhNhan();
 });
 
+app.MapGet("/benh", ([FromQuery] string icd, DbService service) =>
+{
+    return service.GetBenh(icd);
+});
+
 app.MapGet("/benh/all", (DbService service)=>{
     return service.GetAllBenh();
 });
@@ -60,6 +65,11 @@ app.MapGet("/thuoc/all", (DbService service) =>
 app.MapGet("/thuoc", ([FromQuery] string id, DbService service) =>
 {
     return service.GetThuoc(id);
+});
+
+app.MapGet("/buoikham/all", ([FromQuery] int userID, DbService service) =>
+{
+    return service.GetAllBuoiKham(userID);
 });
 #endregion
 

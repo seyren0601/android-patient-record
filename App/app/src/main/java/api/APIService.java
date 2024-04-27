@@ -25,13 +25,15 @@ import retrofit2.http.Query;
 public interface APIService {
     Gson gson = new GsonBuilder().setDateFormat("yyyy/MM/dd").create();
     APIService apiservice = new Retrofit.Builder()
-            .baseUrl("http://10.0.2.2:5154/").addConverterFactory(GsonConverterFactory.create(gson))
-            //.baseUrl("http://192.168.1.5:80/").addConverterFactory(GsonConverterFactory.create(gson))
+            //.baseUrl("http://10.0.2.2:5154/").addConverterFactory(GsonConverterFactory.create(gson))
+            .baseUrl("http://192.168.1.5:80/").addConverterFactory(GsonConverterFactory.create(gson))
             .build()
             .create(APIService.class);
 
     @GET("thuoc")
     Call<Thuoc> getThuoc(@Query("id") String id_thuoc);
+    @GET("benh")
+    Call<Benh> GetBenh(@Query("icd") String icd);
     @GET("benhnhan/all")
     Call<List<BenhNhan>> getData();
 
@@ -40,6 +42,8 @@ public interface APIService {
 
     @GET("thuoc/all")
     Call<ArrayList<Thuoc>> GetAllThuoc();
+    @GET("buoikham/all")
+    Call<ArrayList<BuoiKham>> GetAllBuoiKham(@Query("userID") int id);
 
     @GET("benh")
     Call<ArrayList<Benh>> FindBenhByTen(@Query("icd") String icd);
