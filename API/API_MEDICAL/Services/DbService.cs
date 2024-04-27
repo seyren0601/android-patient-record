@@ -5,6 +5,7 @@ using FuzzySharp;
 using Org.BouncyCastle.Bcpg;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
+using API_MEDICAL.Entities.BuoiKham;
 
 namespace API_MEDICAL.Services
 {
@@ -127,6 +128,23 @@ namespace API_MEDICAL.Services
                     return 0;
                 }
                 
+            }
+        }
+
+        public int InsertBuoiKham(BuoiKham buoiKham, List<LieuThuoc> list_lieuthuoc)
+        {
+            using (var Context = new DatabaseContext())
+            {
+                Context.DbBuoiKham.Add(buoiKham);
+                Context.SaveChanges();
+
+                foreach(LieuThuoc lieuThuoc in list_lieuthuoc)
+                {
+                    lieuThuoc.ID_BUOI_KHAM = buoiKham.ID;
+                    Context.DbLieuThuoc.Add(lieuThuoc);
+                }
+                int affected = Context.SaveChanges();
+                return affected;
             }
         }
         #endregion

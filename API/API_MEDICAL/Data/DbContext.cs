@@ -1,4 +1,5 @@
 ﻿using API_MEDICAL.Entities;
+using API_MEDICAL.Entities.BuoiKham;
 using Microsoft.EntityFrameworkCore;
 
 namespace API_MEDICAL.Data
@@ -11,6 +12,8 @@ namespace API_MEDICAL.Data
         public DbSet<NhomBenh> DbNhomBenh { get;set; }
         public DbSet<Benh> DbBenh { get; set; }
         public DbSet<BenhNhan> DbBenhNhan { get; set; }
+        public DbSet<LieuThuoc> DbLieuThuoc { get; set; }
+        public DbSet<BuoiKham> DbBuoiKham { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

@@ -28,8 +28,12 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 
 import com.example.patientrecord.Classes.Benh;
+import com.example.patientrecord.Classes.BenhNhan;
+import com.example.patientrecord.Classes.BuoiKham;
+import com.example.patientrecord.Classes.BuoiKhamRequest;
 import com.example.patientrecord.Classes.LieuThuoc;
 import com.example.patientrecord.Classes.Thuoc;
 
@@ -43,6 +47,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class Activity_Them_BuoiKham extends AppCompatActivity {
+    BenhNhan benhNhan;
+    String ngayKham;
     ArrayList<String> listBenh;
     ArrayList<Benh> arraylist_benh;
     Benh benh;
@@ -60,6 +66,12 @@ public class Activity_Them_BuoiKham extends AppCompatActivity {
         setContentView(R.layout.layout_add_buoikham);
         setTitle("Thêm buổi khám");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Intent intent = getIntent();
+        benhNhan = (BenhNhan)intent.getSerializableExtra("BenhNhan");
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        ngayKham = simpleDateFormat.format(calendar.getTime());
+        Toast.makeText(Activity_Them_BuoiKham.this, ngayKham, Toast.LENGTH_LONG).show();
 
         list_lieuthuoc = new ArrayList<LieuThuoc>();
 
@@ -109,6 +121,14 @@ public class Activity_Them_BuoiKham extends AppCompatActivity {
         listview = findViewById(R.id.add_buoikham_toathuoc);
         adapter = new DonThuocAdapter(this, R.layout.layout_viewitem_toathuoc, list_lieuthuoc);
         listview.setAdapter(adapter);
+
+        AppCompatButton btn_them = findViewById(R.id.add_buoikham_btn_them);
+        btn_them.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CallAPI_AddBuoiKham();
+            }
+        });
 
         CallAPI_LoadBenh();
         CallAPI_LoadThuoc();
@@ -223,7 +243,6 @@ public class Activity_Them_BuoiKham extends AppCompatActivity {
                 int lieu_chieu = chieu.getValue();
                 int lieu_toi = toi.getValue();
 
-
                 LieuThuoc lieuthuoc = new LieuThuoc(ma_thuoc, lieu_sang, lieu_trua, lieu_chieu, lieu_toi);
                 list_lieuthuoc.add(lieuthuoc);
                 adapter.notifyDataSetChanged();
@@ -237,8 +256,6 @@ public class Activity_Them_BuoiKham extends AppCompatActivity {
                 dialog.dismiss();
             }
         });
-
-
 
         dialog.show();
     }
@@ -352,6 +369,42 @@ public class Activity_Them_BuoiKham extends AppCompatActivity {
             @Override
             public void onFailure(Call<ArrayList<Thuoc>> call, Throwable t) {
 
+            }
+        });
+    }
+
+    void CallAPI_AddBuoiKham(){
+        String icd = ((EditText)findViewById(R.id.add_buoikham_icd)).getText().toString();
+        String ly_do = ((EditText)findViewById(R.id.add_buoikham_lido)).getText().toString();
+        int mach = Integer.parseInt(((EditText)findViewById(R.id.add_buoikham_mach)).getText().toString());
+        int nhip_tho = Integer.parseInt(((EditText)findViewById(R.id.add_buoikham_nhiptho)).getText().toString());
+        int huyet_ap = Integer.parseInt(((EditText)findViewById(R.id.add_buoikham_huyetap)).getText().toString());
+        float chieu_cao = Float.parseFloat(((EditText)findViewById(R.id.add_buoikham_chieucao)).getText().toString());
+        int can_nang = Integer.parseInt(((EditText)findViewById(R.id.add_buoikham_cannang)).getText().toString());
+        float bmi = Float.parseFloat(((EditText)findViewById(R.id.add_buoikham_bmi)).getText().toString());
+        float than_nhiet = Float.parseFloat(((EditText)findViewById(R.id.add_buoikham_nhietdo)).getText().toString());
+        String trieu_chung = ((EditText)findViewById(R.id.add_buoikham_trieuchung)).getText().toString();
+        String benh_phu = ((EditText)findViewById(R.id.add_buoikham_benhphu)).getText().toString();
+        String loi_dan = ((EditText)findViewById(R.id.add_buoikham_loidan)).getText().toString();
+        String ket_qua = ((EditText)findViewById(R.id.add_buoikham_ketqua)).getText().toString();
+        String ngay_tai_kham = ((EditText)findViewById(R.id.add_buoikham_ngaytaikham)).getText().toString();
+        int so_ngay = Integer.parseInt(((EditText)findViewById(R.id.add_buoikham_songay)).getText().toString());
+
+        BuoiKham buoi_kham = new BuoiKham(benhNhan.id, ngayKham, icd, ly_do, mach, nhip_tho, huyet_ap, chieu_cao, can_nang, bmi, than_nhiet,
+                                         trieu_chung, benh_phu, loi_dan, ket_qua, ngay_tai_kham, so_ngay);
+        BuoiKhamRequest request = new BuoiKhamRequest(buoi_kham, list_lieuthuoc);
+        APIService.apiservice.AddBuoiKham(request).enqueue(new Callback<Integer>() {
+            @Override
+            public void onResponse(Call<Integer> call, Response<Integer> response) {
+                if(response.isSuccessful()){
+                    finish();
+                }
+                Toast.makeText(Activity_Them_BuoiKham.this, response.message(), Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onFailure(Call<Integer> call, Throwable t) {
+                Toast.makeText(Activity_Them_BuoiKham.this, t.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
     }

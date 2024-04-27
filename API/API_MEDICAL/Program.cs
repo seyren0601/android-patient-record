@@ -3,6 +3,7 @@ using API_MEDICAL.Entities;
 using Microsoft.AspNetCore.Http.HttpResults;
 using System.Net;
 using Microsoft.AspNetCore.Mvc;
+using API_MEDICAL.Entities.BuoiKham;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -91,6 +92,11 @@ app.MapPost("/benhnhan/cccd", (string cccd, DbService service) =>
 app.MapPost("/update/benhnhan", (BenhNhan benhnhan, DbService service) =>{
     return service.UpdateBenhNhan(benhnhan);
 });
+
+app.MapPost("buoikham/add", ([FromBody] AddBuoiKhamRequest request, DbService service) =>
+{
+    return service.InsertBuoiKham(request.buoiKham, request.list_lieuthuoc);
+});
 #endregion
 
 #region Put
@@ -114,4 +120,10 @@ app.Run();
 internal record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
 {
     public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+}
+
+internal record AddBuoiKhamRequest()
+{
+    public BuoiKham buoiKham { get; set; }
+    public List<LieuThuoc> list_lieuthuoc { get; set; }
 }

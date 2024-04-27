@@ -1,8 +1,8 @@
 package com.example.patientrecord.Classes;
 
 public class LieuThuoc {
-    public int ID;
     public String ID_Thuoc;
+    public int ID_Benh_Nhan;
     public int Lieu_Sang;
     public int Lieu_Trua;
     public int Lieu_Chieu;

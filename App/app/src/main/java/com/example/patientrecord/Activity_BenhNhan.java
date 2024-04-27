@@ -88,6 +88,16 @@ public class Activity_BenhNhan extends AppCompatActivity {
                 OutEdit();
             }
         });
+
+        AppCompatButton btn_them = findViewById(R.id.btn_them_buoikham);
+        btn_them.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Activity_BenhNhan.this, Activity_Them_BuoiKham.class);
+                intent.putExtra("BenhNhan", benhNhan);
+                startActivity(intent);
+            }
+        });
     }
 
     public void ChonNgay_dialog(){

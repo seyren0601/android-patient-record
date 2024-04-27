@@ -19,4 +19,5 @@
     <color name="border_background">#1C1C1E</color>
     <color name="placeholder_text">#98989F</color>
     <color name="url">#278CD9</color>
+    <color name="button">#5D594F</color>
 </resources>
