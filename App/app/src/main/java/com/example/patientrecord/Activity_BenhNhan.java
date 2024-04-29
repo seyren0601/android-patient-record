@@ -189,7 +189,7 @@ public class Activity_BenhNhan extends AppCompatActivity {
         findViewById(R.id.chitiet_edit_nghenghiep).setVisibility(View.VISIBLE);
         if(benhNhan.nghE_NGHIEP != null) ((EditText)findViewById(R.id.chitiet_edit_nghenghiep)).setText(benhNhan.nghE_NGHIEP);
 
-        listview_buoikham.setVisibility(View.GONE);
+        findViewById(R.id.chitiet_layout_lichsukham).setVisibility(View.GONE);
     }
 
     void OutEdit(){
@@ -222,7 +222,7 @@ public class Activity_BenhNhan extends AppCompatActivity {
         findViewById(R.id.chitiet_edit_nghenghiep).setVisibility(View.GONE);
         if(benhNhan.nghE_NGHIEP != null) ((TextView)findViewById(R.id.chitiet_nghenghiep)).setText(benhNhan.nghE_NGHIEP);
 
-        listview_buoikham.setVisibility(View.VISIBLE);
+        findViewById(R.id.chitiet_layout_lichsukham).setVisibility(View.VISIBLE);
     }
 
     void UpdateToView() {
