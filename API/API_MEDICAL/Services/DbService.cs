@@ -114,7 +114,20 @@ namespace API_MEDICAL.Services
         {
             using(var Context = new DatabaseContext())
             {
-                return Context.DbBuoiKham.Where(bk => bk.ID_BENH_NHAN == userID).ToList();
+                return Context.DbBuoiKham.Where(bk => bk.ID_BENH_NHAN == userID).OrderByDescending(x=>x.NGAY).ToList();
+            }
+        }
+
+        public List<BenhNhan> GetBuoiKhamHomNay()
+        {
+            using (var Context = new DatabaseContext())
+            {
+                var query = from benhNhan in Context.DbBenhNhan
+                            join buoiKham in Context.DbBuoiKham on benhNhan.ID equals buoiKham.ID_BENH_NHAN
+                            where buoiKham.NGAY_TAI_KHAM.Date == DateTime.Now.Date
+                            select benhNhan;
+                List<BenhNhan> list_benhnhan = query.ToList();
+                return list_benhnhan;
             }
         }
         #endregion

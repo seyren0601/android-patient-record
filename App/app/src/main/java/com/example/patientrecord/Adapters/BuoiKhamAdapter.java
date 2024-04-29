@@ -6,6 +6,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.patientrecord.Activity_BenhNhan;
 import com.example.patientrecord.Activity_Them_BuoiKham;
 import com.example.patientrecord.Classes.Benh;
@@ -25,11 +27,11 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class BuoiKhamAdapter extends BaseAdapter {
-    public Activity_BenhNhan Context;
+    public AppCompatActivity Context;
     public int Layout;
     public List<BuoiKham> ListBuoiKham;
 
-    public BuoiKhamAdapter(Activity_BenhNhan context, int layout, List<BuoiKham> listBuoiKham){
+    public BuoiKhamAdapter(AppCompatActivity context, int layout, List<BuoiKham> listBuoiKham){
         Context = context;
         Layout = layout;
         ListBuoiKham = listBuoiKham;

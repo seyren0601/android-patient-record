@@ -79,13 +79,14 @@ public class MainActivity extends AppCompatActivity {
             DialogThem();
         }
         else if(id == R.id.menuSearch){
-
+            Intent intent = new Intent(MainActivity.this, Activity_ListBenhNhan.class);
+            startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }
 
     public void CallAPI(){
-        APIService.apiservice.getData().enqueue(new Callback<List<BenhNhan>>(){
+        APIService.apiservice.GetBuoiKhamHomNay().enqueue(new Callback<List<BenhNhan>>(){
             @Override
             public void onResponse(Call<List<BenhNhan>> call, Response<List<BenhNhan>> response){
                 if (response.isSuccessful()) {

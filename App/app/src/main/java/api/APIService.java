@@ -37,6 +37,9 @@ public interface APIService {
     @GET("benhnhan/all")
     Call<List<BenhNhan>> getData();
 
+    @GET("benhnhan/find")
+    Call<List<BenhNhan>> FindBenhNhan(@Query("tenBenhNhan") String ten);
+
     @GET("benh/all")
     Call<ArrayList<Benh>> GetAllBenh();
 
@@ -44,6 +47,9 @@ public interface APIService {
     Call<ArrayList<Thuoc>> GetAllThuoc();
     @GET("buoikham/all")
     Call<ArrayList<BuoiKham>> GetAllBuoiKham(@Query("userID") int id);
+
+    @GET("buoikham/today")
+    Call<List<BenhNhan>> GetBuoiKhamHomNay();
 
     @GET("benh")
     Call<ArrayList<Benh>> FindBenhByTen(@Query("icd") String icd);

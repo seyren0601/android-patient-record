@@ -7,6 +7,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.patientrecord.Classes.BenhNhan;
 import com.example.patientrecord.MainActivity;
 import com.example.patientrecord.R;
@@ -14,11 +16,11 @@ import com.example.patientrecord.R;
 import java.util.List;
 
 public class BenhNhanAdapter extends BaseAdapter {
-    public MainActivity Context;
+    public AppCompatActivity Context;
     public int Layout;
     public List<BenhNhan> ListBenhNhan;
 
-    public BenhNhanAdapter(MainActivity context, int layout, List<BenhNhan> listBenhNhan){
+    public BenhNhanAdapter(AppCompatActivity context, int layout, List<BenhNhan> listBenhNhan){
         Context = context;
         Layout = layout;
         ListBenhNhan = listBenhNhan;

@@ -361,13 +361,14 @@
             android:background="@drawable/border">
 
             <TextView
+                android:id="@+id/chitiet_lichsukham"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="10dp"
                 android:textSize="30sp"
                 android:text="LỊCH SỬ KHÁM"
-                android:textColor="@color/white"/>
+                android:textColor="@color/url"/>
             <ListView
                 android:id="@+id/chitiet_list_buoikham"
                 android:layout_width="match_parent"

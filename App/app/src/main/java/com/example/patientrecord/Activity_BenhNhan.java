@@ -108,6 +108,15 @@ public class Activity_BenhNhan extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        ((TextView)findViewById(R.id.chitiet_lichsukham)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Activity_BenhNhan.this, Activity_LichSuKham.class);
+                intent.putExtra("BenhNhan", benhNhan);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -258,6 +267,7 @@ public class Activity_BenhNhan extends AppCompatActivity {
         APIService.apiservice.GetAllBuoiKham(benhNhan.id).enqueue(new Callback<ArrayList<BuoiKham>>() {
             @Override
             public void onResponse(Call<ArrayList<BuoiKham>> call, Response<ArrayList<BuoiKham>> response) {
+                list_buoikham.clear();
                 if(response.isSuccessful()){
                     for(BuoiKham buoiKham: response.body()){
                         list_buoikham.add(buoiKham);

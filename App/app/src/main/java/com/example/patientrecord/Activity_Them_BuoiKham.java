@@ -409,4 +409,9 @@ public class Activity_Them_BuoiKham extends AppCompatActivity {
             }
         });
     }
+
+    public void DeleteView(View v){
+        TextView text_tenThuoc = v.findViewById(R.id.viewTenThuoc);
+        String tenThuoc = text_tenThuoc.toString();
+    }
 }

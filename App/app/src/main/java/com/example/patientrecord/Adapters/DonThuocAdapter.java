@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.patientrecord.Activity_Them_BuoiKham;
 import com.example.patientrecord.Classes.LieuThuoc;
@@ -34,8 +35,10 @@ public class DonThuocAdapter extends BaseAdapter {
     public DonThuocAdapter(){}
 
     public class ViewHolder{
+        public String ThuocID;
         public TextView TenThuoc;
         public TextView LieuThuoc;
+        public ImageView imageDelete;
     }
 
     @Override
@@ -60,6 +63,7 @@ public class DonThuocAdapter extends BaseAdapter {
             view = inflater.inflate(Layout, null);
             holder.TenThuoc = (TextView)view.findViewById(R.id.viewTenThuoc);
             holder.LieuThuoc = (TextView)view.findViewById(R.id.viewLieuThuoc);
+            holder.imageDelete = (ImageView)view.findViewById(R.id.viewXoa);
             view.setTag(holder);
         }
         else{
@@ -72,6 +76,7 @@ public class DonThuocAdapter extends BaseAdapter {
             public void onResponse(Call<Thuoc> call, Response<Thuoc> response) {
                 Thuoc thuoc = response.body();
                 holder.TenThuoc.setText(thuoc.teN_THUOC);
+                holder.ThuocID = thuoc.id;
             }
 
             @Override
@@ -85,6 +90,19 @@ public class DonThuocAdapter extends BaseAdapter {
         if(lieuthuoc.Lieu_Chieu > 0) lieu += "Chiều: " + lieuthuoc.Lieu_Sang + "  ";
         if(lieuthuoc.Lieu_Toi > 0) lieu += "Tối: " + lieuthuoc.Lieu_Sang + "  ";
         holder.LieuThuoc.setText(lieu);
+
+        holder.imageDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(Context, "in toast", Toast.LENGTH_SHORT).show();
+                for(LieuThuoc lieuThuoc:ListLieuThuoc){
+                    if(lieuThuoc.ID_Thuoc.equals(holder.ThuocID)){
+                        ListLieuThuoc.remove(lieuThuoc);
+                        notifyDataSetChanged();
+                    }
+                }
+            }
+        });
         return view;
     }
 }
