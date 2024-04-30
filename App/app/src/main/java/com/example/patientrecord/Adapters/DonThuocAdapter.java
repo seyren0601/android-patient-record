@@ -8,6 +8,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.patientrecord.Activity_Them_BuoiKham;
 import com.example.patientrecord.Classes.LieuThuoc;
 import com.example.patientrecord.Classes.BenhNhan;
@@ -22,11 +24,11 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class DonThuocAdapter extends BaseAdapter {
-    public Activity_Them_BuoiKham Context;
+    public AppCompatActivity Context;
     public int Layout;
     public List<LieuThuoc> ListLieuThuoc;
 
-    public DonThuocAdapter(Activity_Them_BuoiKham context, int layout, List<LieuThuoc> listLieuThuoc){
+    public DonThuocAdapter(AppCompatActivity context, int layout, List<LieuThuoc> listLieuThuoc){
         Context = context;
         Layout = layout;
         ListLieuThuoc = listLieuThuoc;
@@ -71,7 +73,7 @@ public class DonThuocAdapter extends BaseAdapter {
         }
 
         LieuThuoc lieuthuoc = ListLieuThuoc.get(i);
-        APIService.apiservice.getThuoc(lieuthuoc.ID_Thuoc).enqueue(new Callback<Thuoc>() {
+        APIService.apiservice.getThuoc(lieuthuoc.iD_THUOC).enqueue(new Callback<Thuoc>() {
             @Override
             public void onResponse(Call<Thuoc> call, Response<Thuoc> response) {
                 Thuoc thuoc = response.body();
@@ -85,24 +87,27 @@ public class DonThuocAdapter extends BaseAdapter {
             }
         });
         String lieu = "";
-        if(lieuthuoc.Lieu_Sang > 0) lieu += "Sáng: " + lieuthuoc.Lieu_Sang + "  ";
-        if(lieuthuoc.Lieu_Trua > 0) lieu += "Trưa: " + lieuthuoc.Lieu_Sang + "  ";
-        if(lieuthuoc.Lieu_Chieu > 0) lieu += "Chiều: " + lieuthuoc.Lieu_Sang + "  ";
-        if(lieuthuoc.Lieu_Toi > 0) lieu += "Tối: " + lieuthuoc.Lieu_Sang + "  ";
+        if(lieuthuoc.lieU_SANG > 0) lieu += "Sáng: " + lieuthuoc.lieU_SANG + "  ";
+        if(lieuthuoc.lieU_TRUA > 0) lieu += "Trưa: " + lieuthuoc.lieU_TRUA + "  ";
+        if(lieuthuoc.lieU_CHIEU > 0) lieu += "Chiều: " + lieuthuoc.lieU_CHIEU + "  ";
+        if(lieuthuoc.lieU_TOI > 0) lieu += "Tối: " + lieuthuoc.lieU_TOI + "  ";
         holder.LieuThuoc.setText(lieu);
 
-        holder.imageDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(Context, "in toast", Toast.LENGTH_SHORT).show();
-                for(LieuThuoc lieuThuoc:ListLieuThuoc){
-                    if(lieuThuoc.ID_Thuoc.equals(holder.ThuocID)){
-                        ListLieuThuoc.remove(lieuThuoc);
-                        notifyDataSetChanged();
+        if (holder.imageDelete != null) {
+            holder.imageDelete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(Context, "in toast", Toast.LENGTH_SHORT).show();
+                    for(LieuThuoc lieuThuoc:ListLieuThuoc){
+                        if(lieuThuoc.iD_THUOC.equals(holder.ThuocID)){
+                            ListLieuThuoc.remove(lieuThuoc);
+                            notifyDataSetChanged();
+                        }
                     }
                 }
-            }
-        });
+            });
+        }
+
         return view;
     }
 }

@@ -69,6 +69,11 @@ public class Activity_Them_BuoiKham extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         Intent intent = getIntent();
         benhNhan = (BenhNhan)intent.getSerializableExtra("BenhNhan");
+        ((TextView)findViewById(R.id.add_buoikham_ten)).setText(benhNhan.ten);
+        if(benhNhan.gioI_TINH) ((TextView)findViewById(R.id.add_buoikham_gioitinh)).setText("Nam");
+        else ((TextView)findViewById(R.id.add_buoikham_gioitinh)).setText("Nữ");
+        ((TextView)findViewById(R.id.add_buoikham_tuoi)).setText(benhNhan.tuoi + " tuổi");
+
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         ngayKham = simpleDateFormat.format(calendar.getTime());

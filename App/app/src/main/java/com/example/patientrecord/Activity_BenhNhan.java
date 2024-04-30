@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Adapter;
+import android.widget.AdapterView;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -21,6 +22,7 @@ import com.example.patientrecord.Adapters.BuoiKhamAdapter;
 import com.example.patientrecord.Classes.BenhNhan;
 import com.example.patientrecord.Classes.BuoiKham;
 
+import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -114,6 +116,17 @@ public class Activity_BenhNhan extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(Activity_BenhNhan.this, Activity_LichSuKham.class);
                 intent.putExtra("BenhNhan", benhNhan);
+                startActivity(intent);
+            }
+        });
+
+        listview_buoikham.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                BuoiKham buoiKham = list_buoikham.get(position);
+                Intent intent = new Intent(Activity_BenhNhan.this, Activity_BuoiKham.class);
+                intent.putExtra("BenhNhan", benhNhan);
+                intent.putExtra("BuoiKham", buoiKham);
                 startActivity(intent);
             }
         });

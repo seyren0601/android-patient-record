@@ -2,6 +2,8 @@ package com.example.patientrecord;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -39,6 +41,17 @@ public class Activity_LichSuKham extends AppCompatActivity {
         listview_buoikham.setAdapter(adapter_buoikham);
 
         CallAPI_LoadBuoiKham();
+
+        listview_buoikham.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                BuoiKham buoiKham = list_buoikham.get(position);
+                Intent intent = new Intent(Activity_LichSuKham.this, Activity_BuoiKham.class);
+                intent.putExtra("BenhNhan", benhNhan);
+                intent.putExtra("BuoiKham", buoiKham);
+                startActivity(intent);
+            }
+        });
     }
 
     void CallAPI_LoadBuoiKham(){

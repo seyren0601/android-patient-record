@@ -557,7 +557,9 @@
                 android:layout_marginEnd="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
-                android:cacheColorHint="@color/white"/>
+                android:cacheColorHint="@color/white"
+                android:divider="@android:color/transparent"
+                android:dividerHeight="10.0sp"/>
 
         </LinearLayout>
         <LinearLayout

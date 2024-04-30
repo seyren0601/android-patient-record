@@ -81,6 +81,16 @@ app.MapGet("/buoikham/today", (DbService service) =>
 {
     return service.GetBuoiKhamHomNay();
 });
+
+app.MapGet("/buoikham", ([FromQuery] int id, DbService service) =>
+{
+    return service.GetBuoiKham(id);
+});
+
+app.MapGet("/lieuthuoc", ([FromQuery] int id_buoikham, DbService service) =>
+{
+    return service.GetLieuThuoc(id_buoikham);
+});
 #endregion
 
 #region Post

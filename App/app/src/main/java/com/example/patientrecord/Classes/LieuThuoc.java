@@ -1,18 +1,18 @@
 package com.example.patientrecord.Classes;
 
 public class LieuThuoc {
-    public String ID_Thuoc;
-    public int ID_Benh_Nhan;
-    public int Lieu_Sang;
-    public int Lieu_Trua;
-    public int Lieu_Chieu;
-    public int Lieu_Toi;
+    public int iD_BUOI_KHAM;
+    public String iD_THUOC;
+    public int lieU_SANG;
+    public int lieU_TRUA;
+    public int lieU_CHIEU;
+    public int lieU_TOI;
 
     public LieuThuoc(String id_thuoc, int lieu_sang, int lieu_trua, int lieu_chieu, int lieu_toi){
-        this.ID_Thuoc = id_thuoc;
-        this.Lieu_Sang = lieu_sang;
-        this.Lieu_Trua = lieu_trua;
-        this.Lieu_Chieu = lieu_chieu;
-        this.Lieu_Toi = lieu_toi;
+        this.iD_THUOC = id_thuoc;
+        this.lieU_SANG = lieu_sang;
+        this.lieU_TRUA = lieu_trua;
+        this.lieU_CHIEU = lieu_chieu;
+        this.lieU_TOI = lieu_toi;
     }
 }

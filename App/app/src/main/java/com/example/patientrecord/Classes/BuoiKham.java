@@ -1,7 +1,9 @@
 package com.example.patientrecord.Classes;
 
-public class BuoiKham {
-    public int ID;
+import java.io.Serializable;
+
+public class BuoiKham implements Serializable {
+    public int id;
     public int iD_BENH_NHAN;
     public String ngay;
     public String icd;

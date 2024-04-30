@@ -130,6 +130,22 @@ namespace API_MEDICAL.Services
                 return list_benhnhan;
             }
         }
+
+        public BuoiKham GetBuoiKham(int id)
+        {
+            using (var Context = new DatabaseContext())
+            {
+                return Context.DbBuoiKham.FirstOrDefault(bk => bk.ID == id);
+            }
+        }
+
+        public List<LieuThuoc> GetLieuThuoc(int id_buoikham)
+        {
+            using (var Context = new DatabaseContext())
+            {
+                return Context.DbLieuThuoc.Where(lt=>lt.ID_BUOI_KHAM == id_buoikham).ToList();
+            }
+        }
         #endregion
 
         #region Create
